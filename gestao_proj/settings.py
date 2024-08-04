@@ -166,12 +166,17 @@ WSGI_APPLICATION = 'gestao_proj.wsgi.application'
 #    DATABASE_PATH = "/mnt/db-prod.db"
 # Configurações do Banco de Dados
 
+
+import os
+from urllib.parse import urlparse
+import dj_database_url
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bdbiblia',
+        'NAME': 'ateste',
         'USER': 'root',
-        'PASSWORD': 'Bauru2024',
+        'PASSWORD': 'Akira2018',
         'HOST': 'localhost',  # ou o endereço do seu servidor de banco de dados
         'PORT': '3306',  # a porta padrão do MySQL
     }
