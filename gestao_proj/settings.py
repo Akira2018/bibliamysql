@@ -171,16 +171,34 @@ import os
 from urllib.parse import urlparse
 import dj_database_url
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ateste',
-        'USER': 'root',
-        'PASSWORD': 'Akira2018',
-        'HOST': 'localhost',  # ou o endereço do seu servidor de banco de dados
-        'PORT': '3306',  # a porta padrão do MySQL
+import os
+
+ENVIRONMENT = os.getenv('DJANGO_ENVIRONMENT', 'development')
+
+if ENVIRONMENT == 'production':
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('CLEARDB_DATABASE_URL')
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'bdgestao.sqlite3'),
+        }
+    }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'bdbiblia',
+#        'USER': 'root',
+#        'PASSWORD': 'Bauru2024',
+#        'HOST': 'localhost',  # ou o endereço do seu servidor de banco de dados
+#        'PORT': '3306',  # a porta padrão do MySQL
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
