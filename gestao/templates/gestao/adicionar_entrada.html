@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Entrada Financeira</title>
+</head>
+<body>
+    <h2>Adicionar Entrada Financeira</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar Entrada</button>
+    </form>
+</body>
+</html>

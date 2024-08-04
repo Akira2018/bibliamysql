@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:"Django site admin" }}{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:"Django administration" }}</a></h1>
+    <p style="color: red; font-size: 24px;">Debug: Template carregado corretamente.</p>
+{% endblock %}
+
+{% block nav-global %}
+    <ul class="nav-horizontal">
+        <li><a href="{% url 'admin:index' %}">Home</a></li>
+        {% for app in available_apps %}
+            {% for model in app.models %}
+                <li><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block extrastyle %}
+    <style>
+        .nav-horizontal {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        .nav-horizontal li {
+            float: left;
+        }
+        .nav-horizontal li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .nav-horizontal li a:hover {
+            background-color: #111;
+        }
+    </style>
+{% endblock %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to your profile page, {{ user.username }}!</h1>
+{% endblock %}
+

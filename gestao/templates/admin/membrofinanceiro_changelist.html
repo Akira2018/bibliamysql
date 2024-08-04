@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block object-tools %}
+    {{ block.super }}
+    <li>
+        <a href="{% url 'admin:gestao_membrofinanceiro_aniversariantes' %}" class="button" style="color: white;">Ver Aniversariantes do Mês</a>
+    </li>
+{% endblock %}

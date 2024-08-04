@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Balancete Mensal</title>
+</head>
+<body>
+    <h2>Adicionar Balancete Mensal</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar Balancete</button>
+    </form>
+</body>
+</html>

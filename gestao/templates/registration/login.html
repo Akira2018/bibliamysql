@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <title>Acessar | Site de administração do Django</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/login.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="login">
+    <div id="container">
+        <header id="header">
+            <div id="branding">
+                <div id="site-name"><a href="/admin/">Administração do Django</a></div>
+            </div>
+        </header>
+        <main id="content-start" class="content">
+            <div id="content">
+                <form action="{% url 'admin:login' %}" method="post" id="login-form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="id_username" class="required">Usuário:</label>
+                        <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                    </div>
+                    <div class="form-row">
+                        <label for="id_password" class="required">Senha:</label>
+                        <input type="password" name="password" autocomplete="current-password" required id="id_password">
+                        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'admin:index' %}{% endif %}">
+                    </div>
+                    <div class="submit-row">
+                        <input type="submit" value="Acessar">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

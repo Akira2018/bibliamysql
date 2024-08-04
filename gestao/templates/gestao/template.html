@@ -1,0 +1,7 @@
+<!-- template.html -->
+{% load crispy_forms_tags %}
+<form method="post">
+    {% csrf_token %}
+    {% crispy form %}
+    <button type="submit">Enviar</button>
+</form>

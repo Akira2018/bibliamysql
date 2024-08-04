@@ -1,0 +1,65 @@
+.custom-admin-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens */
+    gap: 10px; /* Reduz o espaço entre os itens */
+    list-style-type: none;
+    padding: 0;
+    width: 80%; /* Largura ajustável conforme necessário */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.custom-admin-menu li {
+    margin-bottom: 5px; /* Reduz o espaçamento entre as linhas */
+}
+
+.custom-admin-menu li a {
+    text-decoration: none;
+    color: #fff; /* Cor do texto dos links (branco) */
+    text-align: center; /* Centraliza o texto dentro dos links */
+    padding: 8px 12px; /* Ajusta o espaçamento interno dos links */
+    display: block; /* Torna os links elementos de bloco */
+    border: 1px solid #ccc; /* Adiciona uma borda aos links */
+    background-color: 38a3a5; /* Cor de fundo semelhante à tela do Django */
+    transition: background-color 0.3s, color 0.3s; /* Suaviza a transição das cores */
+}
+
+.custom-admin-menu li a:hover {
+    background-color: #0056b3; /* Cor de fundo no hover */
+    color: #fff; /* Cor do texto no hover (branco) */
+}
+
+/* Ajustar o menu administrativo */
+#content-related .module {
+    width: auto; /* Ajustar largura automática para o conteúdo */
+    float: none; /* Remover o alinhamento flutuante */
+    margin: 0 auto; /* Centralizar o bloco */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centralizar os itens */
+}
+
+/* Ajustar largura e espaçamento entre os itens do menu */
+#content-related .module h2 {
+    width: 16.5%; /* Aproximadamente 6 itens por linha */
+    margin: 10px; /* Espaçamento entre os itens */
+    text-align: center; /* Centralizar o texto */
+}
+
+.custom-admin-menu li a:hover {
+    background-color: dad2bc;
+    color: #fff;
+}
+
+/* CSS original */
+.my-custom-header {
+  background-color: 517b85;
+  height: 50px;
+  margin-bottom: 0;
+}
+
+
+
+
+
+

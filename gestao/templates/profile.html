@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja Bem-vindo ao Aplicativo</title>
+    <style>
+        /* Estilo para centralizar texto */
+        .center {
+            text-align: center;
+        }
+        /* Estilo para centralizar imagem */
+        .image-container {
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilo para o botão */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+
+    <!-- Estilos específicos para a sobreposição e imagem ampliada -->
+    <style>
+        /* Estilo para sobreposição */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo para a imagem ampliada */
+        .overlay img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container para centralizar conteúdo -->
+    <div class="center">
+        <h1>Olá! Seja bem-vindo ao aplicativo Gestão de Igrejas</h1>
+        <p>Clique no botão abaixo para acessar o aplicativo:</p>
+        <a href="/admin/" class="btn btn-primary">Acessar o Aplicativo</a>
+
+        <!-- Container para a imagem -->
+        <div class="image-container">
+            {% load static %}
+            <img src="{{ MEDIA_URL }}/media/Imagemigreja.jpg" alt=" ">
+          <!--  <img src="/media/ImagemBiblioteca.jpg" alt=" "> -->
+        </div>
+        <p>Você será redirecionado automaticamente em breve...</p>
+    </div>
+    <!-- Script para redirecionamento automático -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "/admin/";
+        }, 10000); // Redireciona após 10 segundos (10000 milissegundos)
+    </script>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+</body>
+</html>

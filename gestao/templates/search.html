@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesquisa na Bíblia</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espaço entre os elementos */
+            margin-bottom: 20px; /* Espaço abaixo do formulário */
+        }
+        #navigation-buttons {
+            display: flex;
+            gap: 15px; /* Espaço entre os botões */
+        }
+        #navigation-buttons a {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        #navigation-buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Pesquisa na Bíblia</h1>
+    <div class="search-container">
+        <form method="GET" action="{% url 'search_view' %}">
+            <label for="book">Livro:</label>
+            <select name="book" id="book">
+                <option value="">Selecione um livro</option>
+                {% for book in books %}
+                    <option value="{{ book }}" {% if request.GET.book == book %}selected{% endif %}>{{ book }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="chapter">Capítulo:</label>
+            <select name="chapter" id="chapter">
+                <option value="">Selecione um capítulo</option>
+                {% for chapter in chapters %}
+                    <option value="{{ chapter }}" {% if request.GET.chapter == chapter|stringformat:"s" %}selected{% endif %}>{{ chapter }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="word">Palavra:</label>
+            <input type="text" name="word" id="word" value="{{ request.GET.word }}">
+
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        <!-- Botões de navegação -->
+        <div id="navigation-buttons">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}&book={{ request.GET.book }}&chapter={{ request.GET.chapter }}&word={{ request.GET.word }}">Retornar Versículo</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&book={{ request.GET.book }}&chapter={{ request.GET.chapter }}&word={{ request.GET.word }}">Avançar Versículo</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <h2>Resultados:</h2>
+    {% if verses %}
+        <ul>
+            {% for verse in verses %}
+                <li>{{ verse.nome_livro }} - Capítulo {{ verse.capitulo }}, Versículo {{ verse.versiculo }}: {{ verse.texto_biblico }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+
+    <!-- Debug informações de paginação -->
+    <div>
+        <p>Página atual: {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
+        <p>Total de versículos: {{ page_obj.paginator.count }}</p>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#book').change(function() {
+            var bookName = $(this).val();
+            var url = "{% url 'get_chapters' %}";
+
+            if (bookName) {
+                $.get(url, { book: bookName }, function(data) {
+                    $('#chapter').html(data.chapter_options);
+                });
+            } else {
+                $('#chapter').html('<option value="">-- Selecione um Capítulo --</option>');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

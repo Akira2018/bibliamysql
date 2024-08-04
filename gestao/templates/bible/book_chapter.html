@@ -1,0 +1,21 @@
+<!-- book_chapter.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book and Chapter</title>
+</head>
+<body>
+    <h1>Book and Chapter</h1>
+    {% if verses %}
+        <ul>
+            {% for verse in verses %}
+                <li>{{ verse.nome_livro }} - Capítulo {{ verse.capitulo }} - Versículo {{ verse.versiculo }}: {{ verse.texto_biblico }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No verses found.</p>
+    {% endif %}
+</body>
+</html>
+
+

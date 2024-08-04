@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>My Site</h1>
+        <nav>
+            <ul class="custom-admin-menu">
+                <li><a href="{% url 'book_chapter' %}">Bíblia Sagrada</a></li>
+                <li><a href="{% url 'search' %}">Buscar na Bíblia</a></li>
+                <!-- Adicione outras entradas do menu aqui -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 My Site</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+

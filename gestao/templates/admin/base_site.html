@@ -1,0 +1,53 @@
+<!-- templates/admin/base_site.html -->
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_custom.css' %}">
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <!-- Removido ou comentado para verificar se a faixa desaparece -->
+    {# {% include "admin/custom_admin_header.html" %} #}
+{% endblock %}
+
+{% block nav-global %}
+    <!-- Substituir ou ajustar o bloco existente para o menu personalizado -->
+    <nav id="menu">
+        <ul class="custom-admin-menu">
+            <li><a href="{% url 'admin:gestao_cadastroestudos_changelist' %}">Cadastro de Estudos</a></li>
+            <li><a href="{% url 'admin:gestao_agendapastoral_changelist' %}">Agenda Pastoral</a></li>
+            <li><a href="{% url 'admin:gestao_agendaigreja_changelist' %}">Agenda Igreja</a></li>
+            <li><a href="{% url 'admin:gestao_batismoigreja_changelist' %}">Cadastro de Batismo</a></li>
+            <li><a href="{% url 'admin:gestao_membrofinanceiro_changelist' %}">Cadastro de Membros</a></li>
+            <li><a href="{% url 'admin:gestao_biblioteca_changelist' %}">Cadastro de Livros</a></li>
+            <li><a href="{% url 'admin:gestao_emprestimolivro_changelist' %}">Empréstimo de Livros</a></li>
+            <li><a href="{% url 'admin:gestao_patrimonio_changelist' %}">Cadastro de Patrimônio</a></li>
+            <li><a href="{% url 'admin:gestao_fornecedor_changelist' %}">Cadastro de Fornecedor</a></li>
+            <li><a href="{% url 'admin:gestao_bancofinanceiro_changelist' %}">Cadastro de Bancos</a></li>
+            <li><a href="{% url 'admin:gestao_contaspagar_changelist' %}">Contas a Pagar</a></li>
+            <li><a href="{% url 'admin:gestao_movimentofinanceiro_changelist' %}">Movimento Financeiro</a></li>
+            <li><a href="{% url 'admin:gestao_entradafinanceira_changelist' %}">Entrada de Recurso Financeiros</a></li>
+            <li><a href="{% url 'admin:gestao_saidafinanceira_changelist' %}">Registro de Pagamentos</a></li>
+            <li><a href="{% url 'admin:gestao_balancetemensal_changelist' %}">Visão do Balancete Mensal</a></li>
+            <li><a href="{% url 'admin:gestao_saldoanual_changelist' %}">Visão do Saldo Anual</a></li>
+            <li><a href="{% url 'search_view' %}">Buscar na Bíblia</a></li>
+
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/admin_custom.js' %}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+

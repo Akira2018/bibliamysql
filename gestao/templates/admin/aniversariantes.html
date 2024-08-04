@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aniversariantes do Mês</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Aniversariantes do Mês</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Aniversário</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aniversariante in aniversariantes %}
+            <tr>
+                <td>{{ aniversariante.nome_membro }}</td>
+                <td>{{ aniversariante.data_aniversario|date:"d/m" }}</td>
+                <td>{{ aniversariante.numero_telefone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

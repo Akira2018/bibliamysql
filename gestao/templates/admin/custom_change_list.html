@@ -1,0 +1,13 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools %}
+    <ul class="object-tools">
+        {{ block.super }}
+        <li>
+            <a href="{% url 'admin:gestao_membrofinanceiro_aniversariantes' %}" class="button custom-button">Ver Aniversariantes do Mês</a>
+        </li>
+        <li>
+         <!--     <a href="{% url 'admin:gestao_membrofinanceiro_add' %}" class="button custom-button">Adicionar Cadastro de Membros</a> -->
+        </li>
+    </ul>
+{% endblock %}
